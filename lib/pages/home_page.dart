@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app/components/todo-tile.dart';
+import 'package:todo_app/components/todo_tile.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -9,6 +9,19 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+// list of todo tasks
+  List todoList = [
+    ["Walk my dog", false], // 0, 1
+    ["Go to gym", false], // 0, 1
+  ];
+
+// check a task
+  void checkBoxChanged(bool? value, int index) {
+    setState(() {
+      todoList[index][1] = !todoList[index][1];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,13 +31,15 @@ class _HomePageState extends State<HomePage> {
           title: Text('To Do'),
           elevation: 0,
         ),
-        body: ListView(
-          children: [
-            TodoTile(),
-            TodoTile(),
-            TodoTile(),
-            TodoTile(),
-          ],
+        body: ListView.builder(
+          itemCount: todoList.length,
+          itemBuilder: (context, index) {
+            return TodoTile(
+              taskName: todoList[index][0],
+              taskCompleted: todoList[index][1],
+              onChanged: (value) => checkBoxChanged(value, index),
+            );
+          },
         ));
   }
 }
