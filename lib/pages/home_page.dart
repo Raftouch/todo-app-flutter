@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/components/todo-tile.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -11,15 +12,18 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.amber[200],
+        backgroundColor: Colors.green[200],
         appBar: AppBar(
-          backgroundColor: Colors.amber,
+          backgroundColor: Colors.green,
           title: Text('To Do'),
           elevation: 0,
         ),
         body: ListView(
           children: [
-            ToDoList(),
+            TodoTile(),
+            TodoTile(),
+            TodoTile(),
+            TodoTile(),
           ],
         ));
   }
