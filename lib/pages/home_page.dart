@@ -31,6 +31,11 @@ class _HomePageState extends State<HomePage> {
           title: const Text('To Do'),
           elevation: 0,
         ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          backgroundColor: Colors.green,
+          child: const Icon(Icons.add),
+        ),
         body: ListView.builder(
           itemCount: todoList.length,
           itemBuilder: (context, index) {
