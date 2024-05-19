@@ -5,6 +5,19 @@ class DialogBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const AlertDialog();
+    return const AlertDialog(
+      backgroundColor: Colors.green,
+      content: SizedBox(
+        height: 120,
+        child: Column(
+          children: [
+            TextField(
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(), hintText: "Add a new task"),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
