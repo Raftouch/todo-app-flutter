@@ -15,7 +15,7 @@ class _HomePageState extends State<HomePage> {
 
 // list of todo tasks
   List todoList = [
-    ["Walk my dog", false], // 0, 1
+    ["Walk my dog", false], // 0, 1 (false for 'not completed')
     ["Go to gym", false], // 0, 1
   ];
 
@@ -26,6 +26,15 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  // save new task
+  void saveNewTask() {
+    setState(() {
+      todoList.add([_controller.text, false]);
+      _controller.clear();
+    });
+    Navigator.of(context).pop();
+  }
+
   //create a new task
   void createNewTask() {
     showDialog(
@@ -33,6 +42,8 @@ class _HomePageState extends State<HomePage> {
         builder: (context) {
           return DialogBox(
             controller: _controller,
+            onSave: saveNewTask,
+            onCancel: () => Navigator.of(context).pop(),
           );
         });
   }
